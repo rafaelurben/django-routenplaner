@@ -1,0 +1,168 @@
+.disable-select {
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+}
+
+body {
+    display: flex;
+    flex-flow: row;
+}
+
+#sidebar {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    height: 100vh;
+    min-width: max(290px, 25%);
+    top: 0;
+    left: 0;
+    float: left;
+    margin: -8px;
+}
+
+#sidebar header {
+    padding: 10px;
+    background-color: lightblue;
+    position: sticky;
+    top: 0;
+}
+
+#sidebar header h2 {
+    margin: 0;
+}
+
+#sidebar nav {
+    padding: 0;
+    background-color: #fafad2;
+    flex-grow: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+#orte {
+    width: 100%;
+}
+
+.ort:nth-child(odd) {
+    background-color: #e7e7a4;
+}
+
+.ort:nth-child(even) {
+    background-color: #e7e794;
+}
+
+.ort.current {
+    background-color: lightgreen;
+}
+
+.ort .id {
+    vertical-align: top;
+    padding: 5px 0 5px 5px;
+    text-align: right;
+}
+
+.ort .infos {
+    vertical-align: top;
+    padding: 5px 8px;
+}
+
+.ort .button a {
+    margin-left: 5px;
+    background-color: #bb86fc;
+    color: black;
+    padding: 4px 8px;
+    margin: 0 12px 0 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.ort.current .button a {
+    display: none;
+}
+
+#content {
+    height: 95%;
+    width: 100%;
+    flex-grow: 1;
+}
+
+#content h1 {
+    margin: 20px 30px;
+}
+
+@media (max-width: 600px) {
+    body {
+        flex-flow: column;
+    }
+
+    #sidebar {
+        height: auto;
+        width: 100vw;
+        order: 1;
+    }
+
+    #orte-container {
+        flex-grow: 0;
+        overflow: auto;
+    }
+}
+
+.btn {
+    background-color: #bb86fc;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.btn#locationurl {
+    background-color: #03dac6;
+    padding: 14px 35px;
+}
+
+.btn.disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+#locationbuttons {
+    padding-bottom: 40px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+i.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+i.arrow.left {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    margin-bottom: 4px;
+}
+
+i.edit {
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    display: inline-block;
+}

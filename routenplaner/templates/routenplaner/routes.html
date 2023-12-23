@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="manifest" href="{% url 'routenplaner:manifest' %}">
+
+        <title>
+            Routenplaner
+        </title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'routenplaner/css/routes.css' %}">
+
+        <link rel="shortcut icon" type="image/x-icon" href="{% static "routenplaner/favicon.ico" %}">
+        <link rel="apple-touch-icon" href="{% static "routenplaner/favicon.ico" %}">
+
+    </head>
+    <body>
+        <center>
+            <h1>Routenplaner
+                {% if user.is_staff %}
+                    <a class="link" href="{% url 'admin:routenplaner_route_changelist' %}">
+                        <i class="edit">✎</i>
+                    </a>
+                {% endif %}
+            </h1>
+            {% for route in routes %}
+                <a class="route" href="{% url 'routenplaner:view-route' object_id=route.id %}">
+                    <b>{{ route.name }}</b>
+                </a>
+            {% endfor %}
+        </center>
+    </body>
+</html>

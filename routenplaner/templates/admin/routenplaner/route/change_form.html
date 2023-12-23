@@ -1,0 +1,10 @@
+{% extends 'admin/change_form.html' %}
+
+{% block object-tools-items %}
+    {% if change %}
+        <li>
+            <a href="{% url 'routenplaner:view-route' object_id %}" target="_blank">Route ansehen</a>
+        </li>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}

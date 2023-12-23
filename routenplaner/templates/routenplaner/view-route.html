@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="manifest" href="{% url 'routenplaner:manifest' %}">
+
+        <title>
+            {{ route.name }}
+            - Routenplaner
+        </title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'routenplaner/css/view-route.css' %}">
+        <script src="{% static 'routenplaner/js/view-route.js' %}"></script>
+
+    </head>
+    <body>
+        <div id="sidebar">
+            <header>
+                <h2 class="disable-select">
+                    <a class="link" href="{% url 'routenplaner:routes' %}">
+                        <i class="arrow left"></i>
+                    </a>
+                    Orte ({{ orte.count }})
+                    {% if user.is_staff %}
+                        <a class="link" href="{% url 'admin:routenplaner_route_change' object_id=route.id %}">
+                            <i class="edit">✎</i>
+                        </a>
+                    {% endif %}
+                </h2>
+            </header>
+            <nav>
+                <table id="orte" cellspacing="0">
+                    {% for ort in orte %}
+                        <tr class="ort" data-url="{{ ort.get_maps_link }}" data-id="{{ ort.pos }}" data-name="{{ ort.name }}" data-address="{{ ort.adresse }}">
+                            <td class="id">
+                                <u class="id">{{ ort.pos }}</u>
+                            </td>
+                            <td class="infos">
+                                <b>{{ ort.name }}</b>
+                                <br>
+                                <i>{{ ort.html_adresse }}</i>
+                            </td>
+                            <td class="button disable-select">
+                                <a onclick="route_setLocation(this.parentNode.parentNode);">Go</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </nav>
+        </div>
+        <div id="content">
+            <center>
+                <h1>{{ route.name }}</h1>
+                <div id="locationinfo">
+                    <b id="locationid">?</b>
+                    <br>
+                    <span id="locationname">Laden...</span>
+                    <br>
+                    <i id="locationaddress">Wird geladen...</i>
+                </div>
+                <br>
+                <br>
+                <div id="locationbuttons" class="disable-select">
+                    <a class="btn disabled" id="buttonprevious" onclick="route_back();">Zurück</a>
+                    <a class="btn" id="locationurl" target="_blank" href="#">Karte</a>
+                    <a class="btn disabled" id="buttonnext" onclick="route_next();">Weiter</a>
+                </div>
+            </center>
+        </div>
+    </body>
+</html>

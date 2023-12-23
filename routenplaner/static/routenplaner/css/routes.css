@@ -1,0 +1,23 @@
+.route {
+    background-color: #bb86fc;
+    color: white;
+    padding: 14px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none !important;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+i.edit {
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    display: inline-block;
+}

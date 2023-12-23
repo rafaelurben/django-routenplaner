@@ -1,0 +1,29 @@
+{
+    "{% load static %}name": "Routenplaner",
+    "short_name": "Routen",
+    "start_url": "{% url 'routenplaner:routes' %}",
+    "scope": "{% url 'routenplaner:routes' %}",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#fff",
+    "description": "Ein simpler Routenplaner",
+    "dir": "ltr",
+    "lang": "de",
+    "icons": [
+        {
+            "src": "{% static 'routenplaner/favicon.png' %}",
+            "sizes": "2000x2000",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "{% static 'routenplaner/favicon.ico' %}",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    ],
+    "prefer_related_applications": false,
+    "related_applications": []
+}
